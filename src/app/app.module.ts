@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
+import { SkygearService } from './skygear.service';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -14,7 +16,8 @@ import { AppComponent } from './app.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [SkygearService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
