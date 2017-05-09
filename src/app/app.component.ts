@@ -25,4 +25,18 @@ export class AppComponent implements OnInit {
       this.title = "Cannot configure skygear";
     });
   }
+
+  addNewRecord() {
+    this.skygearService.getSkygear()
+    .then(()=> this.skygear.signupAnonymously())
+    .then(()=> {
+      var Note = this.skygear.Record.extend('Note');
+      return this.skygear.publicDB.save(new Note({
+        'content': 'Hello World'
+      }));
+    })
+    .then((record)=> {
+      this.title = "Saved record: " + record.id;
+    });
+  }
 }
