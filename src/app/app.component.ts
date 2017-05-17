@@ -21,6 +21,10 @@ export class AppComponent implements OnInit {
       this.skygear = skygear;
       this.title = "Configurated";
     })
+    .then(()=> this.skygear.signupAnonymously())
+    .then(user=> {
+      this.title = "Signed up anonymous user: " + user.id;
+    })
     .catch(error=> {
       this.title = "Cannot configure skygear";
     });
@@ -28,7 +32,6 @@ export class AppComponent implements OnInit {
 
   addNewRecord() {
     this.skygearService.getSkygear()
-    .then(()=> this.skygear.signupAnonymously())
     .then(()=> {
       var Note = this.skygear.Record.extend('Note');
       return this.skygear.publicDB.save(new Note({
