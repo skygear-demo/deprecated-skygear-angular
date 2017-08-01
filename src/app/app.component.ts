@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 
+import skygear from 'skygear';
 import { SkygearService } from './skygear.service';
+
+
+const Note = skygear.Record.extend('Note');
 
 @Component({
   selector: 'app-root',
@@ -17,23 +21,25 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.skygearService.getSkygear()
-    .then(skygear=> {
+    .then((skygear) => {
       this.skygear = skygear;
       this.title = "Configurated";
     })
-    .then(()=> this.skygear.signupAnonymously())
-    .then(user=> {
-      this.title = "Signed up anonymous user: " + user.id;
+    .then(() => {
+      return this.skygear.auth.signupAnonymously();
     })
-    .catch(error=> {
+    .then((user) => {
+      return this.title = "Signed up anonymous user: " + user.id;
+    })
+    .catch((error) => {
       this.title = "Cannot configure skygear";
     });
   }
 
   addNewRecord() {
     this.skygearService.getSkygear()
-    .then(()=> {
-      var Note = this.skygear.Record.extend('Note');
+    .then((skygear) => {
+      this.skygear = skygear;
       return this.skygear.publicDB.save(new Note({
         'content': 'Hello World'
       }));

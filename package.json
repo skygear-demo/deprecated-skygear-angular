@@ -22,7 +22,7 @@
     "@angular/router": "^4.0.0",
     "core-js": "^2.4.1",
     "rxjs": "^5.1.0",
-    "skygear": "^0.23.1",
+    "skygear": "^1.1.0-alpha.2",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
