@@ -8,7 +8,7 @@ Install dependency and start a dev server:
 
 ```
 npm install
-`npm bin`/ng serve
+npm start
 ```
 
 Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
