@@ -1,3 +1,8 @@
+# DEPRECATED
+
+This Skygear angular demo no longer working with Next version. Please refer to
+other example.
+
 # Skygear Angular Demo
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
